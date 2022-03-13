@@ -26,7 +26,7 @@ func RedisCacheSetup(config microstorage.TCache, cache *SCache) {
 		return transformToJson(val), nil
 	}
 
-	cache.Put = func(key string, data CachedObject) {
+	cache.put = func(key string, data CachedObject) {
 		rdb.Set(ctx, key, transformFromJson(data), ttl)
 	}
 

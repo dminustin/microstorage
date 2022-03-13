@@ -9,16 +9,16 @@ import (
 )
 
 type SCache struct {
-	Get func(key string) (CachedObject, error)
-	Put func(key string, data CachedObject)
-	Exists func(key string) (bool)
+	Get    func(key string) (CachedObject, error)
+	put    func(key string, data CachedObject) //Have to use the PutCache channel
+	Exists func(key string) bool
 	Delete func(key string)
 }
 
 var Cache = SCache{}
 
 type CachedObjectChan struct {
-	Uri string
+	Uri    string
 	Object CachedObject
 }
 
@@ -29,23 +29,23 @@ type CachedObject struct {
 	File []byte
 }
 
-
 func CacheRoutine() {
-	for ;; {
+	for {
 		select {
 		case x := <-PutCache:
-			Cache.Put(x.Uri, x.Object)
+			Cache.put(x.Uri, x.Object)
 		}
 		time.Sleep(time.Millisecond * 100)
 	}
 }
 
-func transformFromJson(data interface{}) ([]byte) {
-	r,_ := json.MarshalIndent(data, "", " ")
+func transformFromJson(data interface{}) []byte {
+	r, _ := json.MarshalIndent(data, "", " ")
 	return r
 }
 
 func transformToJson(data []byte) (result CachedObject) {
+	//todo handle error
 	json.Unmarshal(data, &result)
 	return result
 }
@@ -54,10 +54,10 @@ func DefaultCacheSetup(config microstorage.TCache, cache *SCache) {
 	cache.Get = func(key string) (CachedObject, error) {
 		return CachedObject{}, errors.New("Key not exists")
 	}
-	cache.Put = func(key string, data CachedObject) {
+	cache.put = func(key string, data CachedObject) {
 
 	}
-	cache.Exists = func(key string) (bool) {
+	cache.Exists = func(key string) bool {
 		return false
 	}
 
@@ -75,4 +75,3 @@ func Setup(config microstorage.TCache) {
 		DefaultCacheSetup(config, &Cache)
 	}
 }
-
