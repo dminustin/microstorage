@@ -37,7 +37,7 @@ func main() {
 
 func handleGetRequest(w http.ResponseWriter, r *http.Request) {
 	uri := r.RequestURI
-	fmt.Println(r.RequestURI)
+	//fmt.Println(r.RequestURI)
 	if cache.Cache.Exists(uri) {
 		tmp, err := cache.Cache.Get(uri)
 		if err == nil {
@@ -90,6 +90,7 @@ func handleGetRequest(w http.ResponseWriter, r *http.Request) {
 			File: res,
 		}}
 	}
+	microstorage.LogMessage("Got " + id + " without cache")
 }
 
 func doWriteResult(w http.ResponseWriter, data consumers.InputData, file []byte) {
