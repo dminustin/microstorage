@@ -24,7 +24,7 @@ func main() {
 	}
 	api.I = ""
 	microstorage.LogMessage("Web started")
-	http.HandleFunc("/get/", handleGetRequest)
+	http.HandleFunc(microstorage.Config.Network.FilesPath+"/", handleGetRequest)
 	err := http.ListenAndServe(":"+fmt.Sprint(microstorage.Config.Network.Port), nil)
 	if err != nil {
 		microstorage.ThrowException(fmt.Sprintln(err))
