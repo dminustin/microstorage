@@ -4,7 +4,7 @@ This is my exercise of creating simple file storage with GoLang
 
 Purpose: store and manipulate with user`s images in my pet projects 
 
-##Version 0.0.1
+##Version 0.0.2
 
 ##Usage
 
@@ -19,7 +19,6 @@ where xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx is UUID
 .json format example:
 ```
 {
- "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
  "mime": "image/jpeg",
  "ext": ".jpg",
  "transform": {
@@ -44,6 +43,10 @@ Resized:
 http://localhost:(network.port)/get/resize/800x800/UUID
 ```
 
+All files list (will be removed in future)
+```
+http://localhost:9986)/api/files/list
+```
 
 ##Opportunities
 
