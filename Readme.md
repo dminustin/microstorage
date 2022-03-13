@@ -56,6 +56,7 @@ http://localhost:9986)/api/files/list
 
 
 ##Todo
+* Log file by level
 * Ssl encryption
 * Other ways to put files: Kafka, Mysql, Redis etc
 * File manipulations: gzip/zip/rar, format conversions etc
