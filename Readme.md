@@ -63,6 +63,8 @@ http://localhost:9986)/api/files/list
 * Other ways to cache (filesystem, memcached, Mysql, MongoDB etc)
 * Sharding (This is my far-reaching plans)
 * Add immediately conversion (conversion on uploading file), right now only "on_demand" type works  
+* JWT auth to getting files
+* Blur image if user not logged in (using JWT)
 
 Hope this code will help to you
 

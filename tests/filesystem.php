@@ -1,5 +1,5 @@
 <?php
-//Simple test written on PHP
+//Simple test (yes, the code is smells) written on PHP
 function guidv4($data = null) {
     // Generate 16 bytes (128 bits) of random data or use the data passed into the function.
     $data = $data ?? random_bytes(16);
