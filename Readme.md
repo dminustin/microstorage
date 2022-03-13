@@ -52,14 +52,13 @@ http://localhost:(network.port)/get/resize/800x800/UUID
 * You can use Redis as cache engine
 
 
-##Plans
+##Todo
+* Ssl encryption
 * Other ways to put files: Kafka, Mysql, Redis etc
 * File manipulations: gzip/zip/rar, format conversions etc
 * Rest API
 * Other ways to cache (filesystem, memcached, Mysql, MongoDB etc)
 * Sharding (This is my far-reaching plans)
-
-##Todo
 * Add immediately conversion (conversion on uploading file), right now only "on_demand" type works  
 
 Hope this code will help to you
